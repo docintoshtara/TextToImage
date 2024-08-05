@@ -7,7 +7,7 @@ app.use(cors())
 app.use(express.json()); // Middleware to parse JSON bodies
 
 const replicate = new Replicate({
-    auth: 'r8_Di5Zg53YukUCk9RWsmskXXcAHezR6So1XUPBF',
+    auth: 'r8_F9s7D9VWHHizzBoqZKRFfRRZjoLiFPT41tXbI',
   });
 
 
@@ -40,7 +40,7 @@ app.post('/generate', async(req, res) => {
           // return res.status(400).json({ error: 'Prompt is required.' });
 
           const output = await replicate.run(
-            "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
+            "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc",
             {
               input: {
                 prompt: prompt,
