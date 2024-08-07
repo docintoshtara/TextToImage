@@ -1,21 +1,24 @@
 import express from "express";
 import cors from "cors";
 import Replicate from "replicate";
+import 'dotenv/config'
+
 const app = express();
 
 app.use(cors())
 app.use(express.json()); // Middleware to parse JSON bodies
 
 const replicate = new Replicate({
-    auth: 'r8_KOkXS3mEWy0Ayy2WgISgT1sBBfxIQj84P6L7A',
+    auth: process.env.stabilitytoken,
   });
 
 
 app.get('/',(req,res)=>{
     res.send("checking")
+    
 
 })
-
+// console.log(process.env.stabilitytoken)
 console.log("Running the model...");
 
 
@@ -26,7 +29,6 @@ console.log("Running the model...");
 //       prompt: "https://replicate.delivery/mgxm/806bea64-bb51-4c8a-bf4d-15602eb60fdd/1287.jpg, make this person face 60 age only show one face, same as attach link",
 //     }
 //   }
-// 
 // );
 // console.log(output);
 
@@ -40,8 +42,7 @@ app.post('/generate', async(req, res) => {
       if (prompt) {
           // return res.status(400).json({ error: 'Prompt is required.' });
 
-          const output = await replicate.run(
-            "stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc",
+          const output = await replicate.run(process.env.aisdxl,
             {
               input: {
                 width: 768,
